@@ -1,0 +1,44 @@
+.screen {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #0C1125;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+}
+
+/* Animation */
+@keyframes fadeInOut {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.iconWrapper {
+  width: 80px;
+  height: 80px;
+  background-color: white; /* white background */
+  border-radius: 12px; /* optional rounded look */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: fadeInOut 2s ease-in-out infinite;
+}
+
+.icon {
+  font-size: 48px;
+  color: #0C1125; /* Bitcoin orange */
+}
