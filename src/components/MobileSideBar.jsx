@@ -19,7 +19,7 @@ const Sidebar = ({ isOpen, toggleSidebar, isInvest, navigateMobileHandler }) => 
 
   const investLinks = [
   { to: "trade-center", icon: <FaTachometerAlt />, label: "Trade Center" },
-  { to: "/copy-trading", icon: <FaExchangeAlt />, label: "Copy Trading" },
+  { to: "copy-trading", icon: <FaExchangeAlt />, label: "Copy Trading" },
   { to: "fund-account", icon: <FaTachometerAlt />, label: "Fund Account" },
   { to: "withdraw", icon: <FaTachometerAlt />, label: "Withdraw" },
   { to: "upgrade", icon: <FaTachometerAlt />, label: "Upgrade" },

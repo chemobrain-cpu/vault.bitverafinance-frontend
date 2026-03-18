@@ -120,8 +120,6 @@ const CopyTrade = () => {
             </div>
 
           
-
-            
             <div style={uiStyles.grid}>
               {(filteredTraders ?? []).map((item, index) => (
                 <div key={index} style={uiStyles.card}>
