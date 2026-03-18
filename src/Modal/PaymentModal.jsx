@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import styles from "./AuthModal.module.css";
+import { QRCodeCanvas } from "qrcode.react";
 
 export const BitcoinPaymentModal = ({
   modalVisible,
@@ -8,6 +9,7 @@ export const BitcoinPaymentModal = ({
   amount
 }) => {
   const [copied, setCopied] = useState(false);
+  const [showQR, setShowQR] = useState(true);
 
   if (!modalVisible) return null;
 
@@ -27,9 +29,12 @@ export const BitcoinPaymentModal = ({
         >
           close
         </span>
+
         <p className={styles.modalState}>
-          Please send <strong>{amount}</strong> worth of {btcAddress.name} to the address below to complete payment:
+          Please send <strong>{amount}</strong> worth of{" "}
+          <strong>{btcAddress.name}</strong> to the address below:
         </p>
+
         <div
           style={{
             padding: "10px",
@@ -38,23 +43,43 @@ export const BitcoinPaymentModal = ({
             marginBottom: "10px",
             fontSize: "14px",
             fontFamily: "monospace",
-            color:'green'
+            color: "green",
+            background: "#f4f4f4"
           }}
         >
           {btcAddress.address}
         </div>
+
         <div className={styles.modalButtonContainer}>
           <button
             className={styles.acceptBtn}
-            style={{ marginBottom: "10px", position: "relative" }}
+            style={{ marginBottom: "10px" }}
             onClick={copyToClipboard}
           >
             {copied ? "Copied!" : "Copy Address"}
-            
+          </button>
+
+          <button
+            className={styles.acceptBtn}
+            style={{ marginBottom: "10px" }}
+            onClick={() => setShowQR(prev => !prev)}
+          >
+            {showQR ? "Hide QR Code" : "Show QR Code"}
           </button>
         </div>
+
+        {showQR && (
+          <div style={{ textAlign: "center", marginTop: "15px" }}>
+            <QRCodeCanvas
+              value={btcAddress.address}
+              size={200}
+            />
+            <p style={{ marginTop: "10px", fontSize: "13px" }}>
+              Scan with your wallet app
+            </p>
+          </div>
+        )}
       </div>
     </div>
   );
 };
-

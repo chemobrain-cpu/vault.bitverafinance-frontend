@@ -27,11 +27,12 @@ import { NotificationToast } from "./component/general/Notification";
 
 import { toast, Slide, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import Registeration from './screens/Registeration';
-import ProfilePhoto from './screens/ProfilePhoto';
+//import Registeration from './screens/Registeration';
+//import ProfilePhoto from './screens/ProfilePhoto';
 import ImgUrl from  './assets/192.png';
 import Signup from "./screens/Signup";
 import Pin from "./screens/PinSetting";
+import CopyTrade from "./screens/CopyTrade";
 
 
 function App() {
@@ -109,10 +110,13 @@ function App() {
           <Route path='/withdraw' element={<ProtectedRoute><Withdraw /></ProtectedRoute>} />
           <Route path='/deposit-detail' element={<ProtectedRoute><DepositDetail /></ProtectedRoute>} />
 
-          <Route path='/registeration' element={<ProtectedRoute><Registeration /></ProtectedRoute>} />
-          <Route path='/profilephoto' element={<ProtectedRoute><ProfilePhoto /></ProtectedRoute>} />
+          {/*<Route path='/registeration' element={<ProtectedRoute><Registeration /></ProtectedRoute>} />
+          <Route path='/profilephoto' element={<ProtectedRoute><ProfilePhoto /></ProtectedRoute>} />*/}
 
           <Route path='/pin' element={<ProtectedRoute><Pin /></ProtectedRoute>} />
+
+
+          <Route path='/copy-trading' element={<ProtectedRoute><CopyTrade /></ProtectedRoute>} />
         </Routes>
       </Suspense>
       {/* ✅ Toast container must be present for toasts to show */}

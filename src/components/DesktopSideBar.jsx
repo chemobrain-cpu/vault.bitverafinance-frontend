@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-  FaUser, FaTachometerAlt, FaSignOutAlt, FaCog, FaCoins, FaChartLine
+  FaUser, FaTachometerAlt, FaSignOutAlt, FaCog, FaCoins, FaChartLine,FaExchangeAlt
 } from 'react-icons/fa';
 import { NavLink } from 'react-router-dom';
 import styles from './DesktopSideBar.module.css';
@@ -9,7 +9,7 @@ const DesktopSideBar = () => {
   const links = [
     { to: '/invest', icon: <FaTachometerAlt />, label: 'Portfolio' },
     { to: '/profile', icon: <FaUser />, label: 'My Profile' },
-   
+   { to: "/copy-trading", icon: <FaExchangeAlt />, label: "Copy Trading" },
     { to: '/fund-account', icon: <FaCoins />, label: 'Fund Account' },
 
     { to: '/upgrade', icon: <FaCoins />, label: 'Upgrade' },
@@ -25,7 +25,7 @@ const DesktopSideBar = () => {
   return (
     <div className={styles.sidebar} style={{  backgroundColor: '#0C1125'}} >
       <div className={styles.topSection} style={{  backgroundColor: '#0C1125'}}>
-        <div>SWN</div>
+        <div>VBF</div>
       </div>
 
       <div className={styles.navWrapper} style={{  backgroundColor: '#0C1125'}}>

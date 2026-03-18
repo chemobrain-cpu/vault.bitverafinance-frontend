@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import { useNavigate, NavLink, useLocation } from 'react-router-dom';
 import {
   FaWallet, FaUserAlt, FaCreditCard, FaBell,
-  FaCog, FaSignOutAlt, FaTachometerAlt
+  FaCog, FaSignOutAlt, FaTachometerAlt,FaExchangeAlt
 } from 'react-icons/fa';
 import styles from './MobileSideBar.module.css';
 import { useSelector } from 'react-redux';
@@ -18,12 +18,13 @@ const Sidebar = ({ isOpen, toggleSidebar, isInvest, navigateMobileHandler }) => 
   ];
 
   const investLinks = [
-    { to: "trade-center", icon: <FaTachometerAlt />, label: "Trade Center" },
-    { to: "fund-account", icon: <FaTachometerAlt />, label: "Fund Account" },
-    { to: "withdraw", icon: <FaTachometerAlt />, label: "Withdraw" },
-    { to: "upgrade", icon: <FaTachometerAlt />, label: "Upgrade" },
-    { to: "settings", icon: <FaCog />, label: "Settings" },
-  ];
+  { to: "trade-center", icon: <FaTachometerAlt />, label: "Trade Center" },
+  { to: "/copy-trading", icon: <FaExchangeAlt />, label: "Copy Trading" },
+  { to: "fund-account", icon: <FaTachometerAlt />, label: "Fund Account" },
+  { to: "withdraw", icon: <FaTachometerAlt />, label: "Withdraw" },
+  { to: "upgrade", icon: <FaTachometerAlt />, label: "Upgrade" },
+  { to: "settings", icon: <FaCog />, label: "Settings" },
+];
 
 
   const commonLinks = [

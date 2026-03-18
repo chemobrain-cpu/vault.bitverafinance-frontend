@@ -253,7 +253,7 @@ export const signup = (data) => {
       }
 
       if (response.status === 200) {
-        return { bool: true, url: 'verification' };
+        return { bool: true, url: 'invest' };
       }
     } catch (err) {
       return { bool: false, message: err.message };
@@ -432,6 +432,49 @@ export const profilePhoto = (data) => {
   }
 }
 
+
+//fetch copy traders for this account
+
+
+export const fetchCopyTraders = (user) => {
+  return async (dispatch, getState) => {
+    try {
+      let response = await fetch('https://vault-bitverafinance-backend.onrender.com/copy-trades', {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        
+      })
+      if (response.status === 300) {
+        let data = await response.json()
+        console.log(data)
+
+        return {
+          bool: false,
+          message: data.response,
+        }
+      }
+      if (response.status === 200) {
+        let data = await response.json()
+        // dispatch new transactions
+
+        return {
+          bool: true,
+          message: data.response,
+        }
+      }
+    } catch (err) {
+      return {
+        bool: false,
+        message: err.message,
+      }
+    }
+
+  }
+
+
+}
 
 
 //fetch trades for this account
@@ -792,8 +835,7 @@ export const fetchInvestment = (id) => {
   }
 }
 
-//https://vault-bitverafinance-backend.onrender.com
-// actions/depositAction
+//https://vault-bitverafinance-backend.onrenderxxxxx.com
 
 export const fetchDepositHandler = (userId) => {
   return async (dispatch, getState) => {
