@@ -66,10 +66,7 @@ const CopyTrade = () => {
     setAuthInfo('');
   };
 
-  if (loading) {
-    return <LoadingSkeleton />;
-  }
-
+ 
   return (
     <>
       {/* ERROR MODAL */}
