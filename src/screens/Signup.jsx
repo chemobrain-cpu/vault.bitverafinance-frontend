@@ -24,24 +24,32 @@ const SignUpScreen = () => {
         country: '',
         password: '',
         confirmPassword: '',
-        accountPackage: null, // Holds full package object
+        accountPackage: null,
         phone: ''
     });
 
     const [errors, setErrors] = useState({});
     const [isLoading, setIsLoading] = useState(false);
+
+    // ✅ NEW: package loading state
+    const [isPackageLoading, setIsPackageLoading] = useState(true);
+
     const navigate = useNavigate();
 
     const loadInvestmentPackage = async () => {
+        setIsPackageLoading(true); // start loading
+
         let res = await dispatch(fetchPackages());
 
         if (!res.bool) {
             setIsAuthError(true);
             setAuthInfo(res.message);
+            setIsPackageLoading(false); // stop loading
             return;
         }
 
         setInvestmentPackage(res.message);
+        setIsPackageLoading(false); // stop loading
     };
 
     useEffect(() => {
@@ -76,7 +84,6 @@ const SignUpScreen = () => {
         if (!form.gender) newErrors.gender = "Select gender";
         if (!form.country) newErrors.country = "Select country";
         if (!form.phone) newErrors.phone = "Phone number is required";
-        // We remove the accountPackage error here because it's handled by AuthModal
 
         setErrors(newErrors);
         return Object.keys(newErrors).length === 0;
@@ -85,7 +92,6 @@ const SignUpScreen = () => {
     const submitHandler = async () => {
         if (isLoading) return;
 
-        // Show AuthModal error if accountPackage is not selected
         if (!form.accountPackage) {
             setIsAuthError(true);
             setAuthInfo("Please select an investment package to continue.");
@@ -117,9 +123,28 @@ const SignUpScreen = () => {
 
     return (
         <>
+            {/* ✅ FULL SCREEN LOADING MODAL */}
+            {isPackageLoading && (
+                <div style={{
+                    position: "fixed",
+                    top: 0,
+                    left: 0,
+                    width: "100%",
+                    height: "100%",
+                    backgroundColor: "rgba(0,0,0,0.5)",
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    zIndex: 9999
+                }}>
+                    <Spinner size={50} color="#fff" />
+                </div>
+            )}
+
             {isAuthError && (
                 <AuthModal modalVisible={isAuthError} updateVisibility={updateAuthError} message={authInfo} />
             )}
+
             <div className={styles.container}>
                 <div className={styles.innerContainer}>
                     <h2 className={styles.title}>Sign Up</h2>
@@ -166,7 +191,6 @@ const SignUpScreen = () => {
                             </option>
                         ))}
                     </select>
-                    {/* Inline error removed for accountPackage since handled by AuthModal */}
 
                     <input name="password" type="password" placeholder="Password" className={styles.input} value={form.password} onChange={handleChange} />
                     <p className={styles.error}>{errors.password}</p>

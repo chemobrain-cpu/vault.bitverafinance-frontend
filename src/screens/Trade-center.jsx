@@ -180,7 +180,7 @@ const TradeCenter = () => {
             </div>
           </div>
 
-          <KycWarningCard />
+      
 
           {loading ? (
             <div style={{ marginTop: '50px' }}>

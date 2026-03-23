@@ -15,6 +15,9 @@ const KycWarningCard = () => {
   let navigate = useNavigate()
 
 
+  
+
+
   let title = '';
   let message = '';
   let Icon = null;

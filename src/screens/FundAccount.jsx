@@ -277,7 +277,6 @@ const FundAccount = () => {
             </div>
           </div>
 
-          <KycWarningCard />
 
 
 

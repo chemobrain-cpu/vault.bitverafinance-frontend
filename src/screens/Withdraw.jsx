@@ -222,7 +222,6 @@ const Withdraw = () => {
             </div>
           </div>
 
-          <KycWarningCard />
 
           {!loading ? (
             <div className={styles.container}>

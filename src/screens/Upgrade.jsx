@@ -131,7 +131,6 @@ const Upgrade = () => {
             title='Our Plans'
           />
 
-          <KycWarningCard />
 
           <section className={styles.pricingSection}>
             <div className={styles.cardWrapper}>

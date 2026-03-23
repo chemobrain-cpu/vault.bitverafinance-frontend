@@ -170,7 +170,6 @@ const Portfolio = () => {
 
             {handler ? handler.message.handler.map((data, i) => <DepositPlanCard key={i} plan={data} />) : null}
 
-            <KycWarningCard />
 
             <div className={styles.cardContainer}>
               <div className={styles.cardSection}>
